@@ -4,14 +4,22 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
- * i++ 的原子性问题
- * int i = 10;
- * i = i++;
- * i++操作实际分三步骤:
- * int temp = i;  // 读
- * i = i+1;       // 改
- * i = temp;      // 写
- *
+ * 1. i++ 的原子性问题
+ *      int i = 10;
+ *      i = i++;
+ *      i++操作实际分三步骤:
+ *      int temp = i;  // 读
+ *      i = i+1;       // 改
+ *      i = temp;      // 写
+ * 2. 原子变量: jdk 1.5后,java.util.concurrent.atomic 包下提供了常用的原子变量:
+ *      a. volatile 保证内存的可见性
+ *      b. CAS (compare-and-swap) 算法 保证数据的原子性
+ *      CAS算法是 硬件对于并发操作共享数据的支持
+ *      CAS算法包含了三个操作数:
+ *      内存值 V
+ *      预估值 A
+ *      更新值 B
+ *      当且仅当 V == B  时,  V = B, 否则不做作任何操作
  * @author mamp
  * @data 2020/4/19
  */
