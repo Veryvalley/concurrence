@@ -1,0 +1,16 @@
+/target/
+.settings/
+*.class
+/.idea/
+.classpath
+/overlays/
+*.iml
+.project
+/src/main/webapp/WEB-INF/classes/
+/src/main/webapp/WEB-INF/classes/lib/
+/.project
+.settings
+/.classpath
+/bin/
+.idea
+/logs/
