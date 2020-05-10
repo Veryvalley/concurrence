@@ -21,9 +21,15 @@ public class AppTest {
         System.out.println(16 >> 5);
 
         System.out.println(~4); // 0100 -> 1011
-        System.out.println( 5^9); // 0101 / 1001
+        System.out.println(5 ^ 9); // 0101 / 1001
 
-        ConcurrentHashMap<String ,Object> hashMap = new ConcurrentHashMap<>();
+        ConcurrentHashMap<String, Object> hashMap = new ConcurrentHashMap<>();
 
     }
+
+    @Test
+    public void test1() {
+        System.out.println(1 << 16);
+    }
+
 }

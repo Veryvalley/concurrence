@@ -5,6 +5,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
 
 /**
  * CopyOnWriteArrayList/CopyOnWriteArraySet "写入并复制"
+ * 只能保证最终一致性
  *
  * @author mamp
  * @data 2020/4/19

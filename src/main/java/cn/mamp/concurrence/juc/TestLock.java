@@ -10,7 +10,7 @@ import java.util.concurrent.locks.ReentrantLock;
  * 1.1 同步代码块
  * 2.2 同步方法
  * 2. 显示锁 Lock jdk 1.5 后
- * 注意: 显式锁,需要通过lock()方法上锁,必须通过unlock()方法进行释放锁
+ * 注意: 显式锁,需要通过lock()方法上锁,必须通过unlock()方法进行释放锁 ,必须写在finally的第一行
  *
  * @author mamp
  * @data 2020/4/19
