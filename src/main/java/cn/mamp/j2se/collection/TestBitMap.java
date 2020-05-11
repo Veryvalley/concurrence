@@ -182,6 +182,17 @@ class BitMap {
         return !(flag == 0);
     }
 
+    /**
+     * 计算bitMap中 1的个数
+     *
+     * @return
+     */
+    public int bitCount() {
+        // TODO 参考Integer和Long的 bitCount 方法
+        Integer.bitCount(100);
+        return 0;
+    }
+
     public static void main(String[] args) throws IOException {
         long start = System.currentTimeMillis();
         BitMap bitMap = new BitMap(2000000000);
