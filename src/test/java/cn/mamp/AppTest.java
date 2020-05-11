@@ -29,7 +29,12 @@ public class AppTest {
 
     @Test
     public void test1() {
-        System.out.println(1 << 16);
+
+        System.out.println(1L >>> 63);
+        System.out.println( Integer.bitCount(7)); // 00000111
+        System.out.println(Long.bitCount(1L));
+
+        System.out.println( (1|1|0) == 1);
     }
 
 }
