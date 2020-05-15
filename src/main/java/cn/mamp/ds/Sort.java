@@ -1,5 +1,7 @@
 package cn.mamp.ds;
 
+import java.util.Random;
+
 /**
  * 排序
  *
@@ -72,10 +74,20 @@ class MergeSort {
     public static void main(String[] args) {
         MergeSort sort = new MergeSort();
         int[] data = new int[]{7, 4, 5, 8, 3};
-        sort.sort(data, 0, data.length - 1);
-        for (int i : data) {
-            System.out.println(i);
+        data = new int[100000000];
+        Random random = new Random();
+        for (int i = 0; i < data.length; i++) {
+            data[i] = random.nextInt(10000000);
         }
+        System.out.println("start...");
+        long start = System.currentTimeMillis();
+        int[] temp = new int[1];
+        sort.sort(data, 0, data.length - 1, temp);
+        long end = System.currentTimeMillis();
+        System.out.println("用时:" + (end - start));
+        /*for (int i : data) {
+            System.out.println(i);
+        }*/
     }
 
     /**
@@ -83,7 +95,7 @@ class MergeSort {
      * @param start 排序的开始
      * @param end   排序的结束
      */
-    public void sort(int[] data, int start, int end) {
+    public void sort(int[] data, int start, int end, int[] temp) {
         // 如果 start == end 说明数据只有一个元素,不需要排序
         if (start >= end) {
             return;
@@ -91,13 +103,13 @@ class MergeSort {
 
         int mid = (end + start) / 2;
         // 先拆分,拆分的时间复杂度为 O(log2n)
-        sort(data, start, mid);
-        sort(data, mid + 1, end);
+        sort(data, start, mid, temp);
+        sort(data, mid + 1, end, temp);
 
         // 再合并(时间复杂度为: O(n): 循环都没有嵌套)
 
         // 发开辟end - start + 1 个临时数组空间
-        int[] temp = new int[end - start + 1];
+        temp = new int[end - start + 1];
         int idxLeft = start; // 左数组下标, 开始为start
         int idxRight = mid + 1;  // 右数组下标, 开始为 mid+1
         int idxTemp = 0;  // 临时数组下标,开始为0
@@ -128,6 +140,38 @@ class MergeSort {
         // 把temp数组的数据复制到 data[]
         for (int i = 0; i < idxTemp; i++) {
             data[start + i] = temp[i];
+        }
+    }
+
+
+}
+
+
+/**
+ * 计数排序
+ */
+class CountSort {
+    public static void main(String[] args) {
+        double[] dataO = new double[]{235.15, 859, 666.6, 128, 588, 25, 700, 580, 666.6};
+        CountSort cs = new CountSort();
+        cs.countSort(dataO);
+    }
+
+    /**
+     * 200W 考生的考试成绩排序, 最大数为 900,最多有两位小数
+     */
+
+    public void countSort(double[] data) {
+        int[] temp = new int[90100];
+        for (int i = 0; i < data.length; i++) {
+            temp[(int) (data[i] * 100)]++;
+        }
+        for (int j = 0; j < temp.length; j++) {
+            if (temp[j] > 0) {
+                for (int k = 1; k <= temp[j]; k++) {
+                    System.out.println((double) (j / 100));
+                }
+            }
         }
     }
 
