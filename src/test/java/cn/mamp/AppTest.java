@@ -2,6 +2,7 @@ package cn.mamp;
 
 import org.junit.Test;
 
+import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 
 import static org.junit.Assert.assertTrue;
@@ -10,6 +11,7 @@ import static org.junit.Assert.assertTrue;
  * Unit test for simple App.
  */
 public class AppTest {
+
     /**
      * Rigorous Test :-)
      */
@@ -31,10 +33,27 @@ public class AppTest {
     public void test1() {
 
         System.out.println(1L >>> 63);
-        System.out.println( Integer.bitCount(7)); // 00000111
+        System.out.println(Integer.bitCount(7)); // 00000111
         System.out.println(Long.bitCount(1L));
 
-        System.out.println( (1|1|0) == 1);
+        System.out.println((1 | 1 | 0) == 1);
     }
 
+    @Test
+    public void testUUID() {
+        // UUID uuid = new UUID();
+        System.out.println(UUID.randomUUID());
+    }
+
+    @Test
+    public void testAssert() {
+        try {
+            boolean flag = 1 == 2;
+            assert flag;
+            System.out.println("xxx");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
 }

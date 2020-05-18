@@ -82,11 +82,11 @@ public class BinaryTree {
             return;
         }
         // 1. 遍历左子树
-        pre(root.getLeft());
+        mid(root.getLeft());
         // 2. 打印根节点
         System.out.print(root.getData());
         // 3. 遍历右子树
-        pre(root.getRight());
+        mid(root.getRight());
     }
 
     /**
@@ -101,9 +101,9 @@ public class BinaryTree {
             return;
         }
         // 1. 遍历左子树
-        pre(root.getLeft());
+        after(root.getLeft());
         // 2. 遍历右子树
-        pre(root.getRight());
+        after(root.getRight());
         // 3. 打印根节点
         System.out.print(root.getData());
     }

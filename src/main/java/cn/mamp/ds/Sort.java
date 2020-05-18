@@ -148,7 +148,7 @@ class MergeSort {
 
 
 /**
- * 计数排序
+ * 计数排序(基数)
  */
 class CountSort {
     public static void main(String[] args) {
