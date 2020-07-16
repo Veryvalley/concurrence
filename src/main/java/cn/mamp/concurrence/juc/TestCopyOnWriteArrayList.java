@@ -6,6 +6,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
 /**
  * CopyOnWriteArrayList/CopyOnWriteArraySet "写入并复制"
  * 只能保证最终一致性
+ * 注意: 添加操作多时效率低,因为得奖每次添加操作都是复制整个list,并发迭代操作多时可以使用
  *
  * @author mamp
  * @data 2020/4/19

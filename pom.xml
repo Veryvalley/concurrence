@@ -30,6 +30,12 @@
             <artifactId>netty-all</artifactId>
             <version>4.1.35.Final</version>
         </dependency>
+
+        <dependency>
+            <groupId>com.espertech</groupId>
+            <artifactId>esper</artifactId>
+            <version>7.1.0</version>
+        </dependency>
     </dependencies>
 
     <build>
