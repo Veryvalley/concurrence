@@ -1,5 +1,8 @@
 package cn.mamp.concurrence.juc;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
@@ -11,6 +14,8 @@ import java.util.concurrent.locks.ReentrantLock;
  * @data 2020/5/6
  */
 public class TestAlternateThread {
+
+    private static   final Logger logger = LoggerFactory.getLogger(TestAlternateThread.class);
     public static void main(String[] args) {
         AlternateDemo demo = new AlternateDemo();
         // 线程A
@@ -44,6 +49,7 @@ public class TestAlternateThread {
 }
 
 class AlternateDemo {
+    private static   final Logger logger = LoggerFactory.getLogger(AlternateDemo.class);
     // 当前loop的标记,1-> loopA, 2-> loopB,3-> loopC
     private int currentFlag = 1;
     private Lock lock = new ReentrantLock();
@@ -64,12 +70,12 @@ class AlternateDemo {
                 conditionA.await();
             }
             // 2. 打印 A
-            System.out.println(Thread.currentThread().getName() + ":" + loopNum);
+            logger.info(Thread.currentThread().getName() + ":" + loopNum);
             // 3. 唤醒 B
             currentFlag = 2;
             conditionB.signalAll();
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.error(e.getMessage(),e);
         } finally {
             lock.unlock();
         }
@@ -89,12 +95,12 @@ class AlternateDemo {
                 conditionB.await();
             }
             // 2. 打印 B
-            System.out.println(Thread.currentThread().getName() + ":" + loopNum);
+            logger.info(Thread.currentThread().getName() + ":" + loopNum);
             // 3. 唤醒 C
             currentFlag = 3;
             conditionC.signalAll();
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.error(e.getMessage(),e);
         } finally {
             lock.unlock();
         }
@@ -113,13 +119,13 @@ class AlternateDemo {
                 conditionC.await();
             }
             // 2. 打印 C
-            System.out.println(Thread.currentThread().getName() + ":" + loopNum);
+            logger.info(Thread.currentThread().getName() + ":" + loopNum);
             // 3. 唤醒 A
             currentFlag = 1;
             conditionA.signalAll();
             System.out.println("-----------------");
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.error(e.getMessage(),e);
         } finally {
             lock.unlock();
         }

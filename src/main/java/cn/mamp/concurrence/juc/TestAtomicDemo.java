@@ -25,10 +25,10 @@ import java.util.concurrent.atomic.AtomicInteger;
  */
 public class TestAtomicDemo {
     public static void main(String[] args) {
-        // 非原子操作
-        // NoneAtomicDemo demo = new NoneAtomicDemo();
-        // 原子操作
-        AtomicDemo demo = new AtomicDemo();
+        // 非原子操作,可能会出现重复的值
+         NoneAtomicDemo demo = new NoneAtomicDemo();
+        // 原子操作，不会出现重复的值
+       // AtomicDemo demo = new AtomicDemo();
         for (int i = 0; i < 10; i++) {
             new Thread(demo, "线程" + (i + 1)).start();
         }
@@ -44,6 +44,7 @@ class NoneAtomicDemo implements Runnable {
     @Override
     public void run() {
         try {
+            // 1.8建议用 TimeUnit代替Thread.sleep();
             TimeUnit.SECONDS.sleep(1);
         } catch (InterruptedException e) {
             e.printStackTrace();

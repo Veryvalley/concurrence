@@ -3,6 +3,7 @@ package cn.mamp.concurrence.juc;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.FutureTask;
+import java.util.concurrent.TimeUnit;
 
 /**
  * 创建执行线程的方法一共有四种 ,callable是第三种, 第四种是线程池
@@ -22,6 +23,7 @@ public class TestCallable {
 
         // 2. 接收执行的最后结果, 在计算线程执行完成前,会阻塞等待, 可用于闭锁
         try {
+            System.out.println("等待返回结果...");
             int sum = result.get();
             System.out.println("sum = " + sum);
         } catch (InterruptedException e) {
@@ -41,6 +43,7 @@ class ThreadDemo implements Callable<Integer> {
         for (int i = 0; i <= 100; i++) {
             sum += i;
         }
+        TimeUnit.SECONDS.sleep(5);
         return sum;
     }
 }

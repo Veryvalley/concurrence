@@ -10,6 +10,9 @@ import java.util.List;
 
 /**
  * jdk 原生的 NIO
+ *
+ * C10k
+ * C10M
  * @author mamp
  * @data 2020/9/15
  */
